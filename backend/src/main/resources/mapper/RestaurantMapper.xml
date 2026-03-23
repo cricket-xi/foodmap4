@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.campusfoodie.mapper.RestaurantMapper">
+
+    <resultMap id="RestaurantResultMap" type="com.campusfoodie.model.Restaurant">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="emoji" column="emoji"/>
+        <result property="university" column="university"/>
+        <result property="category" column="category"/>
+        <result property="rating" column="rating"/>
+        <result property="price" column="price"/>
+        <result property="distance" column="distance"/>
+        <result property="latitude" column="latitude"/>
+        <result property="longitude" column="longitude"/>
+        <collection property="tags" column="id" select="findTagsByRestaurantId"/>
+        <collection property="dietaryFeatures" column="id" select="findDietaryFeaturesByRestaurantId"/>
+        <collection property="menu" column="id" select="com.campusfoodie.mapper.MenuItemMapper.findByRestaurantId"/>
+        <collection property="reviews" column="id" select="com.campusfoodie.mapper.ReviewMapper.findByRestaurantId"/>
+    </resultMap>
+
+    <select id="findAll" resultMap="RestaurantResultMap">
+        SELECT * FROM restaurant
+    </select>
+
+    <select id="findById" resultMap="RestaurantResultMap">
+        SELECT * FROM restaurant WHERE id = #{id}
+    </select>
+
+    <select id="findTagsByRestaurantId" resultType="java.lang.String">
+        SELECT tags FROM restaurant_tags WHERE restaurant_id = #{restaurantId}
+    </select>
+
+    <select id="findDietaryFeaturesByRestaurantId" resultType="java.lang.String">
+        SELECT dietary_features FROM restaurant_dietary_features WHERE restaurant_id = #{restaurantId}
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO restaurant (name, emoji, university, category, rating, price, distance, latitude, longitude)
+        VALUES (#{name}, #{emoji}, #{university}, #{category}, #{rating}, #{price}, #{distance}, #{latitude}, #{longitude})
+    </insert>
+
+    <update id="update">
+        UPDATE restaurant
+        <set>
+            <if test="name != null">name = #{name},</if>
+            <if test="emoji != null">emoji = #{emoji},</if>
+            <if test="university != null">university = #{university},</if>
+            <if test="category != null">category = #{category},</if>
+            <if test="rating != null">rating = #{rating},</if>
+            <if test="price != null">price = #{price},</if>
+            <if test="distance != null">distance = #{distance},</if>
+            <if test="latitude != null">latitude = #{latitude},</if>
+            <if test="longitude != null">longitude = #{longitude},</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM restaurant WHERE id = #{id}
+    </delete>
+
+    <insert id="insertTags">
+        INSERT INTO restaurant_tags (restaurant_id, tags) VALUES
+        <foreach collection="tags" item="tag" separator=",">
+            (#{restaurantId}, #{tag})
+        </foreach>
+    </insert>
+
+    <insert id="insertDietaryFeatures">
+        INSERT INTO restaurant_dietary_features (restaurant_id, dietary_features) VALUES
+        <foreach collection="features" item="feature" separator=",">
+            (#{restaurantId}, #{feature})
+        </foreach>
+    </insert>
+
+    <delete id="deleteTagsByRestaurantId">
+        DELETE FROM restaurant_tags WHERE restaurant_id = #{restaurantId}
+    </delete>
+
+    <delete id="deleteDietaryFeaturesByRestaurantId">
+        DELETE FROM restaurant_dietary_features WHERE restaurant_id = #{restaurantId}
+    </delete>
+
+</mapper>

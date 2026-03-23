@@ -1,0 +1,7 @@
+{
+  "name": "food map",
+  "description": "专为广州大学城学生打造的本地化美食探索与决策平台，解决“今天吃什么”难题，提供真实评价与学生优惠。",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}

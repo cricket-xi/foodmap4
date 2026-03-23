@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.campusfoodie.mapper.CouponMapper">
+
+    <select id="findAll" resultType="com.campusfoodie.model.Coupon">
+        SELECT * FROM coupon ORDER BY created_at DESC
+    </select>
+
+    <select id="findByRestaurantId" resultType="com.campusfoodie.model.Coupon">
+        SELECT * FROM coupon WHERE restaurant_id = #{restaurantId} ORDER BY created_at DESC
+    </select>
+
+    <select id="findById" resultType="com.campusfoodie.model.Coupon">
+        SELECT * FROM coupon WHERE id = #{id}
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO coupon (restaurant_id, title, discount_amount, min_spend, total_quantity, remaining_quantity, valid_until, status)
+        VALUES (#{restaurantId}, #{title}, #{discountAmount}, #{minSpend}, #{totalQuantity}, #{remainingQuantity}, #{validUntil}, #{status})
+    </insert>
+
+    <update id="update">
+        UPDATE coupon
+        <set>
+            <if test="title != null">title = #{title},</if>
+            <if test="discountAmount != null">discount_amount = #{discountAmount},</if>
+            <if test="minSpend != null">min_spend = #{minSpend},</if>
+            <if test="totalQuantity != null">total_quantity = #{totalQuantity},</if>
+            <if test="remainingQuantity != null">remaining_quantity = #{remainingQuantity},</if>
+            <if test="validUntil != null">valid_until = #{validUntil},</if>
+            <if test="status != null">status = #{status},</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM coupon WHERE id = #{id}
+    </delete>
+
+</mapper>
