@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商家管理后台 - Campus Foodie</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .sidebar-item.active {
+            background-color: #fff7ed;
+            color: #ea580c;
+            border-right: 3px solid #ea580c;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 h-screen flex overflow-hidden text-gray-800">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white border-r border-gray-200 flex flex-col hidden md:flex">
+        <div class="h-16 flex items-center px-6 border-b border-gray-200">
+            <span class="text-2xl mr-2">🍔</span>
+            <span class="font-bold text-lg text-orange-600">Campus Foodie</span>
+            <span class="ml-2 text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">商家版</span>
+        </div>
+        
+        <div class="flex-1 overflow-y-auto py-4">
+            <nav class="space-y-1">
+                <a href="#" class="sidebar-item active flex items-center px-6 py-3 text-sm font-medium text-gray-600 hover:bg-orange-50 hover:text-orange-600 transition-colors">
+                    <span class="mr-3 text-lg">📊</span> 数据看板
+                </a>
+                <a href="#" class="sidebar-item flex items-center px-6 py-3 text-sm font-medium text-gray-600 hover:bg-orange-50 hover:text-orange-600 transition-colors">
+                    <span class="mr-3 text-lg">🍲</span> 菜品管理
+                </a>
+                <a href="#" class="sidebar-item flex items-center px-6 py-3 text-sm font-medium text-gray-600 hover:bg-orange-50 hover:text-orange-600 transition-colors">
+                    <span class="mr-3 text-lg">⭐</span> 评价管理
+                </a>
+                <a href="#" class="sidebar-item flex items-center px-6 py-3 text-sm font-medium text-gray-600 hover:bg-orange-50 hover:text-orange-600 transition-colors">
+                    <span class="mr-3 text-lg">🎟️</span> 优惠券设置
+                </a>
+                <a href="#" class="sidebar-item flex items-center px-6 py-3 text-sm font-medium text-gray-600 hover:bg-orange-50 hover:text-orange-600 transition-colors">
+                    <span class="mr-3 text-lg">🏪</span> 店铺信息
+                </a>
+            </nav>
+        </div>
+
+        <div class="p-4 border-t border-gray-200">
+            <div class="flex items-center">
+                <div class="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 font-bold">
+                    广
+                </div>
+                <div class="ml-3">
+                    <p class="text-sm font-medium text-gray-700">广大商业中心烤肉饭</p>
+                    <p class="text-xs text-gray-500">营业中</p>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col overflow-hidden">
+        
+        <!-- Top Header -->
+        <header class="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-6 z-10">
+            <div class="flex items-center md:hidden">
+                <span class="text-2xl mr-2">🍔</span>
+                <span class="font-bold text-lg text-orange-600">商家后台</span>
+            </div>
+            <h1 class="text-xl font-semibold text-gray-800 hidden md:block">数据看板</h1>
+            
+            <div class="flex items-center space-x-4">
+                <button class="text-gray-400 hover:text-gray-600 relative">
+                    <span class="text-xl">🔔</span>
+                    <span class="absolute top-0 right-0 block h-2 w-2 rounded-full bg-red-500 ring-2 ring-white"></span>
+                </button>
+                <button class="text-sm font-medium text-gray-600 hover:text-gray-900 border border-gray-300 rounded-md px-3 py-1.5">
+                    退出登录
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Scrollable Area -->
+        <main class="flex-1 overflow-y-auto bg-gray-50 p-6">
+            
+            <!-- Stats Row -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <!-- Stat Card 1 -->
+                <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-gray-500">今日浏览量</p>
+                            <p class="text-3xl font-bold text-gray-900 mt-2">1,248</p>
+                        </div>
+                        <div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-blue-500 text-xl">
+                            👁️
+                        </div>
+                    </div>
+                    <div class="mt-4 flex items-center text-sm">
+                        <span class="text-green-500 font-medium flex items-center">↑ 12%</span>
+                        <span class="text-gray-400 ml-2">较昨日</span>
+                    </div>
+                </div>
+
+                <!-- Stat Card 2 -->
+                <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-gray-500">新增收藏</p>
+                            <p class="text-3xl font-bold text-gray-900 mt-2">42</p>
+                        </div>
+                        <div class="w-12 h-12 rounded-full bg-red-50 flex items-center justify-center text-red-500 text-xl">
+                            ❤️
+                        </div>
+                    </div>
+                    <div class="mt-4 flex items-center text-sm">
+                        <span class="text-green-500 font-medium flex items-center">↑ 5%</span>
+                        <span class="text-gray-400 ml-2">较昨日</span>
+                    </div>
+                </div>
+
+                <!-- Stat Card 3 -->
+                <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-gray-500">平均评分</p>
+                            <p class="text-3xl font-bold text-gray-900 mt-2">4.8</p>
+                        </div>
+                        <div class="w-12 h-12 rounded-full bg-yellow-50 flex items-center justify-center text-yellow-500 text-xl">
+                            ⭐
+                        </div>
+                    </div>
+                    <div class="mt-4 flex items-center text-sm">
+                        <span class="text-gray-500 font-medium flex items-center">- 持平</span>
+                        <span class="text-gray-400 ml-2">本周表现稳定</span>
+                    </div>
+                </div>
+
+                <!-- Stat Card 4 -->
+                <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-gray-500">领券数量</p>
+                            <p class="text-3xl font-bold text-gray-900 mt-2">156</p>
+                        </div>
+                        <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center text-orange-500 text-xl">
+                            🎟️
+                        </div>
+                    </div>
+                    <div class="mt-4 flex items-center text-sm">
+                        <span class="text-green-500 font-medium flex items-center">↑ 24%</span>
+                        <span class="text-gray-400 ml-2">开学季活动效果</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                
+                <!-- Menu Management Preview -->
+                <div class="lg:col-span-2 bg-white rounded-xl shadow-sm border border-gray-100">
+                    <div class="px-6 py-5 border-b border-gray-100 flex justify-between items-center">
+                        <h2 class="text-lg font-semibold text-gray-800">热门菜品管理</h2>
+                        <button class="text-sm bg-orange-50 text-orange-600 px-3 py-1.5 rounded-md font-medium hover:bg-orange-100 transition-colors">
+                            + 添加菜品
+                        </button>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-gray-50 text-gray-500 text-sm border-b border-gray-100">
+                                    <th class="px-6 py-3 font-medium">菜品名称</th>
+                                    <th class="px-6 py-3 font-medium">价格</th>
+                                    <th class="px-6 py-3 font-medium">状态</th>
+                                    <th class="px-6 py-3 font-medium text-right">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-sm divide-y divide-gray-100">
+                                <tr class="hover:bg-gray-50 transition-colors">
+                                    <td class="px-6 py-4 flex items-center">
+                                        <div class="w-10 h-10 rounded bg-orange-100 flex items-center justify-center text-xl mr-3">🍱</div>
+                                        <span class="font-medium text-gray-800">招牌蜜汁烤肉饭</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-gray-600">¥ 15.00</td>
+                                    <td class="px-6 py-4">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                            在售
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 text-right">
+                                        <button class="text-blue-600 hover:text-blue-800 font-medium mr-3">编辑</button>
+                                        <button class="text-red-600 hover:text-red-800 font-medium">下架</button>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition-colors">
+                                    <td class="px-6 py-4 flex items-center">
+                                        <div class="w-10 h-10 rounded bg-yellow-100 flex items-center justify-center text-xl mr-3">🍗</div>
+                                        <span class="font-medium text-gray-800">脆皮鸡排饭</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-gray-600">¥ 16.00</td>
+                                    <td class="px-6 py-4">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                            在售
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 text-right">
+                                        <button class="text-blue-600 hover:text-blue-800 font-medium mr-3">编辑</button>
+                                        <button class="text-red-600 hover:text-red-800 font-medium">下架</button>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition-colors">
+                                    <td class="px-6 py-4 flex items-center">
+                                        <div class="w-10 h-10 rounded bg-red-100 flex items-center justify-center text-xl mr-3">🌶️</div>
+                                        <span class="font-medium text-gray-800">香辣烤肉双拼饭</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-gray-600">¥ 18.00</td>
+                                    <td class="px-6 py-4">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                                            已售罄
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 text-right">
+                                        <button class="text-blue-600 hover:text-blue-800 font-medium mr-3">编辑</button>
+                                        <button class="text-green-600 hover:text-green-800 font-medium">上架</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Recent Reviews -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 flex flex-col">
+                    <div class="px-6 py-5 border-b border-gray-100 flex justify-between items-center">
+                        <h2 class="text-lg font-semibold text-gray-800">最新评价</h2>
+                        <a href="#" class="text-sm text-orange-600 hover:text-orange-700 font-medium">查看全部</a>
+                    </div>
+                    <div class="p-6 flex-1 overflow-y-auto space-y-6">
+                        <!-- Review 1 -->
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-sm">👨‍🎓</div>
+                                    <span class="ml-2 text-sm font-medium text-gray-800">计科张同学</span>
+                                </div>
+                                <span class="text-yellow-400 text-sm">⭐⭐⭐⭐⭐</span>
+                            </div>
+                            <p class="text-sm text-gray-600">分量超级足！烤肉肥瘦相间，酱汁拌饭绝了，每次下课不知道吃什么就来这家。</p>
+                            <p class="text-xs text-gray-400 mt-2">今天 12:30 · 招牌蜜汁烤肉饭</p>
+                        </div>
+                        
+                        <hr class="border-gray-100">
+
+                        <!-- Review 2 -->
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-sm">👩‍🎓</div>
+                                    <span class="ml-2 text-sm font-medium text-gray-800">外语李同学</span>
+                                </div>
+                                <span class="text-yellow-400 text-sm">⭐⭐⭐⭐</span>
+                            </div>
+                            <p class="text-sm text-gray-600">味道不错，就是饭点人太多了要排队，建议错峰来吃。用了学生优惠券很划算。</p>
+                            <p class="text-xs text-gray-400 mt-2">昨天 18:15 · 脆皮鸡排饭</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Simple tab switching logic for sidebar
+        document.querySelectorAll('.sidebar-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+                e.currentTarget.classList.add('active');
+                
+                // Update header title based on clicked item
+                const title = e.currentTarget.textContent.trim().split(' ')[1];
+                document.querySelector('header h1').textContent = title;
+            });
+        });
+    </script>
+</body>
+</html>
